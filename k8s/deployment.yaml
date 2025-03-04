@@ -9,15 +9,15 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app-api-flask-deployment
+      app: app-api-flask
   template:
     metadata:
       labels:
-        app: app-api-flask-deployment
+        app: app-api-flask
     spec:
       containers:
-      - name: app-api-flask-deployment
-        image: app-api-flask-deployment:lastest
+      - name: app-api-flask
+        image: app-api-flask:latest
         resources:
           requests:
             cpu: "250m"
