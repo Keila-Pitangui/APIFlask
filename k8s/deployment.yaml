@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-api-flask-deployment
+  namespace: development
   labels:
     app: app-api-flask-deployment
     environment: development
@@ -9,15 +10,15 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app-api-flask-deployment
+      app: app-api-flask
   template:
     metadata:
       labels:
-        app: app-api-flask-deployment
+        app: app-api-flask
     spec:
       containers:
-      - name: app-api-flask-deployment
-        image: app-api-flask-deployment:lastest
+      - name: app-api-flask
+        image: keilapitangui/app-api-flask:latest
         resources:
           requests:
             cpu: "250m"
@@ -25,3 +26,4 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 5000
+        imagePullPolicy: Always
