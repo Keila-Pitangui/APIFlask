@@ -1,20 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-api-flask-deployment
+  name: app-api-flask
   namespace: development
   labels:
-    app: app-api-flask-deployment
+    app: app-api-flask
     environment: development
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: app-api-flask
+      app.kubernetes.io/name: MyApp
   template:
     metadata:
       labels:
         app: app-api-flask
+        app.kubernetes.io/name: MyApp
     spec:
       containers:
       - name: app-api-flask
@@ -27,3 +29,4 @@ spec:
         ports:
         - containerPort: 5000
         imagePullPolicy: Always
+      restartPolicy: Always
