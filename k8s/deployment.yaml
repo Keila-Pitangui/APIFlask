@@ -29,9 +29,9 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 5000
-        volumeMounts: #volume para certificado tsl
+        volumeMounts: 
         - name: tsl-secret
-          mountPath: "/etc/ssl/certs"
+          mountPath: "/etc/ssl/certs" #volume para certificado tsl
           readOnly: true
       volumes:
       - name: tsl-secret
