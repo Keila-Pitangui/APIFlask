@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-flask-ingress
+  namespace: development
+spec:
+  rules:
+  - host: app-api-flask.local  # Domínio que você está usando
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-flask-svc  # Nome do seu Service
+            port:
+              number: 80
+  - host: app-api-flask.local  # Pode usar o mesmo host para https
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-flask-svc  # Nome do seu Service
+            port:
+              number: 443  # Porta para HTTPS

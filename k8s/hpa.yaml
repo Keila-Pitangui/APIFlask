@@ -4,11 +4,11 @@ metadata:
   name: app-api-flask-hpa
 spec:
   scaleTargetRef:
-    apiVersion: app/vi
+    apiVersion: app/v1
     kind: Deployment
-    name: app-api-flask-deployment
+    name: app-api-flask
   minReplicas: 3
-  maxReplicas: 5
+  maxReplicas: 6
 metrics:
   - type:
     resource:

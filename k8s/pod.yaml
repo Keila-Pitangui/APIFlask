@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: api-flask-pod
+  namespace: development
+  labels: 
+    name: app-api-flask
+spec:
+  containers:
+  - name: api-flask-container
+    image: keilapitangui/app-api-flask:latest
+    ports:
+    - containerPort: 5000
+    env:
+    - name: ENVIRONMENT
+      value: "development"
+    - name: API
+      value: "api-flask"
+    resources:
+      limits:
+        cpu: "500m"
+        memory: "256Mi"
+      requests:
+        cpu: "256m"
+        memory: "128mi"
+  restartPolicy: ALways
