@@ -21,6 +21,7 @@ spec:
       containers:
       - name: app-api-flask
         image: keilapitangui/app-api-flask:latest
+        imagePullPolicy: Always
         resources:
           requests:
             cpu: "250m"
@@ -28,5 +29,12 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 5000
-        imagePullPolicy: Always
+        volumeMounts: #volume para certificado tsl
+        - name: tsl-secret
+          mountPath: "/etc/ssl/certs"
+          readOnly: true
+      volumes:
+      - name: tsl-secret
+        secret:
+          secretName: app-api-flask-tsl-secret
       restartPolicy: Always
