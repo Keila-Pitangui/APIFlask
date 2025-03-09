@@ -15,7 +15,6 @@ spec:
             name: api-flask-svc  # Nome do seu Service
             port:
               number: 80
-  - host: app-api-flask.local  # Pode usar o mesmo host para https
     http:
       paths:
       - path: /
@@ -28,6 +27,6 @@ spec:
   tls:
   - hosts:
     - app-api-flask.local
-    secretName: app-api-flask-tsl-secret
+    secretName: app-api-flask-tls-secret
     # comando para criar certificado tsl 
     # openssl req -x509 -newkey rsa:2048 -keyout cert.key -out cert.crt -days 365 -nodes

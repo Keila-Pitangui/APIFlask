@@ -23,4 +23,4 @@ spec:
       requests:
         cpu: "256m"
         memory: "128mi"
-  restartPolicy: ALways
+  restartPolicy: Always

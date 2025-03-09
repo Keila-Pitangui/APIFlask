@@ -58,4 +58,3 @@ def delete_user(id):
     user.remove(user)
     return '', 204
 
-# export FLASK_APP=app.py

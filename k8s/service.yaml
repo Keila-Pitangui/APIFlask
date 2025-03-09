@@ -10,6 +10,7 @@ metadata:
 spec: 
   type: LoadBalancer
   selector:
+    app: app-api-flask
     app.kubernetes.io/name: MyApp
   ports:
     - name: http

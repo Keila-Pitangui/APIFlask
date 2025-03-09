@@ -29,12 +29,23 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 5000
-        volumeMounts: 
+        volumeMounts:
         - name: tsl-secret
-          mountPath: "/etc/ssl/certs" #volume para certificado tsl
+          mountPath: "/etc/ssl/certs"  # volume para certificado TLS
+          readOnly: true
+        - name: configmap-volume
+          mountPath: /etc/config
           readOnly: true
       volumes:
       - name: tsl-secret
         secret:
-          secretName: app-api-flask-tsl-secret
+          secretName: app-api-flask-tls-secret
+      - name: configmap-volume
+        configMap:
+          name: api-flask-configmap
+          items:
+            - key: DATABASE_URI
+              path: database_uri.txt
+            - key: ENVIRONMENT
+              path: environment.txt
       restartPolicy: Always
