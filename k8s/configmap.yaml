@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-flask-configmap
+  namespace: development
+  labels:
+    app: app-api-flask
+    environment: development
+data:
+  DATABASE_URI: "sqlite:///user.db"
+  ENVIRONMENT: "development"

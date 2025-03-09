@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: api-flask-replicaset
+  namespace: development
+  labels:
+    name: api-flask
+spec:
+  replicas: 3  # Corrigido de 'replica' para 'replicas'
+  selector:
+    matchLabels:
+      app: app-api-flask
+      app.kubernetes.io/name: MyApp
+  template:
+    metadata:
+      labels:
+        app: app-api-flask
+        app.kubernetes.io/name: MyApp
+    spec:
+      containers:
+      - name: app-api-flask
+        image: keilapitangui/app-api-flask:latest
+        ports:
+        - containerPort: 5000

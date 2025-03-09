@@ -2,24 +2,24 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: app-api-flask-hpa
+  namespace: development
 spec:
   scaleTargetRef:
-    apiVersion: app/v1
+    apiVersion: apps/v1
     kind: Deployment
     name: app-api-flask
   minReplicas: 3
   maxReplicas: 6
-metrics:
-  - type:
-    resource:
-      name: cpu
-    target:
-      type: Utilization
-      averageUtilization: 50
-metrics:
-  - type:
-    resource:
-      name: memory
-    target:
-      type: Utilization
-      averageUtilization: 70
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 70
